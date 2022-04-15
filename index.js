@@ -37,9 +37,10 @@ const lanches = [
     },
   ];
 
-app.get('/', function (req, res) {
-  res.send('Hello World');
-});
+//ROTA PARA LER OBJETO LANCHES
+app.get('/lanches/lista-lanches', (req, res) => {
+    res.send(lanches);
+  });
 
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
