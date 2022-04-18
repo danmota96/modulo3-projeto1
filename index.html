@@ -17,20 +17,16 @@
 <body>
   <div class="home">
     
-    <div class="LancheLista" id="LancheList">]
-
-    </div>
-    <div class="ListaLancheItem">
-      <div class="ListaLancheItem__local">101 Brasa Burger</div>
-      <div class="ListaLancheItem__localizacao">Vila Velha - ES</div>
-      <img src="/assets/img/101.PNG" alt="" class="ListaLancheItem__foto" width="25%">
-      <div class="ListaLancheItem__nome">GTO</div>
-      <div class="ListaLancheItem__descricao">2 Carnes, queijo mussarela e cheddar, costela desfiada, bacon e molho 101!</div>
-      <div class="ListaLancheItem__preco">R$ 35.00</div>
-    </div>
-
-   
-    
+    <div class="LancheLista" id="LancheList">
+      <div class="ListaLancheItem">
+        <div class="ListaLancheItem__local">${lanches.local}</div>
+        <div class="ListaLancheItem__localizacao">${lanche.localizacao}</div>
+        <img src=${lanche.foto} alt=${lanche.nome} class="ListaLancheItem__foto" width="25%">
+        <div class="ListaLancheItem__nome">${lanche.nome}</div>
+        <div class="ListaLancheItem__descricao">${lanche.descricao}</div>
+        <div class="ListaLancheItem__preco">${lanche.preco.toFixed(2)}</div>
+      </div>
+    </div>  
   </div>
     
   <script src="./assets/js/script.js"></script>

@@ -6,18 +6,21 @@ async function findAllLanches() {
   const lanches = await response.json();
 
   lanches.forEach((lanches) => {
-  document.getElementById('LancheList').insertAdjacentHTML(
+  document.getElementById('LancheLista').insertAdjacentHTML(
+    //primeiro parâmetro
     'beforeend',
+    //segundo parâmetro a ser adicionado no HTML
     `
+    <div class="LancheLista">
     <div class="ListaLancheItem">
       <div class="ListaLancheItem__local">${lanche.local}</div>
-      <div class="ListaLancheItem__localizacao">${lanche.localizacao}S</div>
+      <div class="ListaLancheItem__localizacao">${lanche.localizacao}</div>
       <img src=${lanche.foto} alt=${lanche.nome} class="ListaLancheItem__foto" width="25%">
-      <div class="ListaLancheItem__nome">${lanche.nome}/div>
+      <div class="ListaLancheItem__nome">${lanche.nome}</div>
       <div class="ListaLancheItem__descricao">${lanche.descricao}</div>
       <div class="ListaLancheItem__preco">${lanche.preco.toFixed(2)}</div>
     </div>
-
+  </div>  
     `,
   );
   });
