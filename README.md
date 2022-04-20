@@ -13,3 +13,12 @@ Projeto construído na turma C011-M03-FLS do curso de Desenvolvedor Full-Stack d
 
 Licença
 Veja o LICENSE file para mais detalhes.
+
+---- 
+Rodando o Projeto
+
+No repositório API -
+digitar NPM RUN DEV no terminal
+
+No repositório de Frontend -
+Abrir o arquivo index.html no pelo Live Server
