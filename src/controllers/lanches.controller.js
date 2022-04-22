@@ -1,7 +1,7 @@
 const lanchesService = require('../services/lanches.service');
 
-const findLanchesController = (req, res) => {
-  const allLanches = lanchesService.findLanchesService();
+const findLanchesController = async (req, res) => {
+  const allLanches = await lanchesService.findLanchesService();
   res.send(allLanches);
 };
 
@@ -25,7 +25,8 @@ const createLancheController = (req, res) => {
     !lanche.preco ||
     !lanche.foto
   ) {
-    return res.send({ mensagem: "Você não preencheu todos os dados para adicionar uma nova paleta ao cardápio!" });
+    //STATUS(NUM) indica qual tipo de erro irá aparecer.
+    return res.status(400).send({ mensagem: "Você não preencheu todos os dados para adicionar uma nova paleta ao cardápio!" });
   }
   const newLanche = lanchesService.createLancheService(lanche);
   res.send(newLanche);
