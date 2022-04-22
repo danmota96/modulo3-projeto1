@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const LancheSchema = new mongooose.Schema({
+const LancheSchema = new mongoose.Schema({
     local: { type: String, required: true },
     localizacao: { type: String, required: true },
     nome: { type: String, required: true },
@@ -10,6 +10,6 @@ const LancheSchema = new mongooose.Schema({
   });
 
 //código para criar a collection Lanche no DB
-const Lanche = mongooose.model('lanches', LancheSchema);
+const Lanche = mongoose.model('lanches', LancheSchema);
 
 module.exports = Lanche;
