@@ -11,7 +11,7 @@ const validId = (req, res, next) => {
 
 //método para validar o json
 const validObjectBody = (req, res, next) => {
-    const lanche = req.body;
+    const lancheEdit = req.body;
     
     if (
         !lancheEdit ||
