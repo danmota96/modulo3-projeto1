@@ -5,28 +5,24 @@ const findLanchesService = async () => {
     return lanches;
 }; 
 
-const findLancheByIdService = (idParam) => {
-  return lanches.find((lanche) => lanche.id === idParam);
+const findLancheByIdService = async (id) => {
+    const lanche = await Lanche.findById(id);
+    return lanche;
 };
 
-const createLancheService = (newLanche) => {
-  const newId = lanches.length + 1;
-  newLanche.id = newId;
-  lanches.push(newLanche);
+const createLancheService = async (lanche) => {
+  const newLanche = await Lanche.create(lanche);
   return newLanche;
 };
 
-const updateLancheService = (id, lancheEdited) => {
-  lancheEdited['id'] = id;
-  const lancheIndex = lanches.findIndex((lanche) => lanche.id == id);
-  lanches[lancheIndex] = lancheEdited;
+const updateLancheService = async (id, lanche) => {
+  const lancheEdited = await Lanche.findByIdAndUpdate(id, lanche);
   return lancheEdited;
 };
 
 
-const deleteLancheService = (id) => {
-  const lancheIndex = lanches.findIndex((lanche) => lanche.id == id);
-  return lanches.splice(lancheIndex, 1);
+const deleteLancheService = async (id) => {
+  return await Lanche.findByIdAndDelete(id);
 };
 
 module.exports = {

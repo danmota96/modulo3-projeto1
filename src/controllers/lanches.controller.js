@@ -8,12 +8,13 @@ const findLanchesController = async (req, res) => {
 };
 
 const findLancheByIdController = async (req, res) => {
-  const idParam = Number(req.params.id);
+  const idParam = req.params.id;
   //validar se o idParam pode ser válido para o mongo
+
   if (!mongoose.Types.ObjectId.isValid(idParam)) {
     res.status(400).send({ message: 'ID inválido!' });
   }
-
+  /* findLancheByIdService utiliza-se ASYNC */
   const chosenLanche = await lanchesService.findLancheByIdService(idParam);
 
   if (!chosenLanche) {
@@ -34,7 +35,7 @@ const createLancheController = async (req, res) => {
     !lanche.preco ||
     !lanche.foto
   ) {
-    //STATUS(NUM) indica qual tipo de erro irá aparecer.
+    //STATUS (NUM) indica qual tipo de erro irá aparecer.
     return res.status(400).send({
       mensagem:
         'Você não preencheu todos os dados para adicionar uma nova paleta ao cardápio!',
@@ -44,50 +45,25 @@ const createLancheController = async (req, res) => {
   res.send(newLanche);
 };
 
-/* const updateLancheController = async (req, res) => {
+
+
+const updateLancheController = async (req, res) => {
   const idParam = req.params.id;
   const lancheEdit = req.body;
-
+  //tratamento de erro
+  
   if (!mongoose.Types.ObjectId.isValid(idParam)) {
-    res.status(400).send({ message: 'ID inválido' });
+    res.status(400).send({message: 'ID inválido'});
   }
 
-  //VALIDAR ID DO LANCHE (MONGO)
+  /* VALIDAÇÃO PARA VERIFICAR SE O ID ESTÁ CADASTRADO */
   const chosenLanche = await lanchesService.findLancheByIdService(idParam);
 
   if (!chosenLanche) {
-    return res.status(400).send({ message: 'Lanche não cadastrado!' });
+    return res.status(404).send({ message: "Lanche não cadastrado!" })
   }
 
-  const updatedLanche = await lanchesService.updateLancheService(
-    idParam,
-    lancheEdit,
-  );
-
-  if (
-    !lancheEdit ||
-    !lancheEdit.local ||
-    !lancheEdit.localizacao ||
-    !lancheEdit.nome ||
-    !lancheEdit.descricao ||
-    !lancheEdit.foto ||
-    !lancheEdit.preco
-  ) {
-    return res.status(400).send({
-      message: 'Você não preencheu todos os dados para editar a paleta!',
-    });
-  }
-
-  res.send(updatedLanche);
-}; */
-
-const updateLancheController = (req, res) => {
-  const idParam = +req.params.id;
-  const lancheEdit = req.body;
-  //tratamento de erro
-  if (!idParam) {
-    return res.status(404).send({ message: "Lanche não encontrada!" })
-  }
+  const updateLanche = await lanchesService.updateLancheService(idParam, lancheEdit);
 
   if (
     !lancheEdit ||
@@ -100,17 +76,26 @@ const updateLancheController = (req, res) => {
     ) {
     return res.status(400).send({ message: "Você não preencheu todos os dados para editar o lanche!" });
   }
-  const updatedLanche = lanchesService.updateLancheService(idParam, lancheEdit);
-  res.send(updatedLanche);
+
+  res.send(updateLanche);
 };
 
-const deleteLancheController = (req, res) => {
+const deleteLancheController = async (req, res) => {
   const idParam = req.params.id;
    //tratamento de erro
-  if (!idParam) {
+
+  if(!mongoose.Types.ObjectId.isValid){
+    return res.status(400).send({message: 'ID inválido'});
+  }
+
+  const chosenLanche = lanchesService.deleteLancheService(idParam);
+
+  if (!chosenLanche) {
     return res.status(404).send({ message: 'Lanche não encontrado!' });
   }
-  lanchesService.deleteLancheService(idParam);
+
+  await lanchesService.deleteLancheService(idParam);
+  
   res.send({ message: 'Lanche deletado com sucesso!' });
 };
 
