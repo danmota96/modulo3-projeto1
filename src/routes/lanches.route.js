@@ -1,5 +1,3 @@
-
-
 const router = require('express').Router();
 const controllerLanches = require('../controllers/lanches.controller');
 
