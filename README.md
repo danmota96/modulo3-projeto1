@@ -6,6 +6,7 @@ Node.js
 Express
 HTML
 CSS
+MONGODB
 
 Projeto
 Projeto construído na turma C011-M03-FLS do curso de Desenvolvedor Full-Stack da BlueEdTech.
@@ -22,3 +23,7 @@ digitar NPM RUN DEV no terminal
 
 No repositório de Frontend -
 Abrir o arquivo index.html no pelo Live Server
+
+---
+
+Conectado via mongoDB
