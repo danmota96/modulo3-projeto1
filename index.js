@@ -3,7 +3,7 @@ const cors = require('cors');
 const routes = require('./src/routes/lanches.route');
 const connectToDatabase = require('./src/database/database'); 
 
-const port = 3000;
+const port = 3333;
 const app = express();
 const route = require('./src/routes/lanches.route');
 connectToDatabase(); 

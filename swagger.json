@@ -1,0 +1,318 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Lanches 2022",
+        "description": "API para CRUD de lista de lanches.",
+        "termsOfService": "",
+        "contact": {
+            "email": "daniel.msil2@gmail.com"
+        }
+    },
+    "servers": [
+        {
+          "url": "http://localhost:3333/lanches",
+          "description": "API de teste"
+        },
+        {
+          "url": "TESTE",
+          "description": "API de produção"
+        }
+      ],
+      "paths": {
+        "/lista-lanches": {
+          "get": {
+            "summary": "Lista de todas os lanches cadastrados",
+            "description": "Rota responsável por listar todos os lanches",
+            "tags": ["Lanches"],
+            "responses": {
+              "404": {
+                "description": "Not Found"
+              },
+              "200": {
+                "description": "OK",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Lanches"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/lista-lanches/{id}": {
+          "get": {
+            "summary": "Busca um Lanche pelo ID",
+            "description": "Rota responsável por buscar um Lanche pelo ID",
+            "tags": ["Lanches"],
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "description": "Id do lanche para a busca",
+                "required": true
+              }
+            ],
+            "responses": {
+              "400": {
+                "description": "Bad Request"
+              },
+              "200": {
+                "description": "OK",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/Lanches"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/create": {
+          "post": {
+            "summary": "Cadastrar um lanche",
+            "description": "Rota responsável por cadastrar um lanche",
+            "tags": ["Lanches"],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Lanches"
+                  },
+                  "examples": {
+                    "Lanches": {
+                      "value": {
+                        "local": "Nome da lanchonete",
+                        "localizacao": "vila velha - es",
+                        "nome": "Podrão Gigante",
+                        "descricao": "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
+                        "foto": "./assets/img/korujao.png",
+                        "preco": 35
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "400": {
+                "description": "Bad Request"
+              },
+              "201": {
+                "description": "Created",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/Lanches"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/update/{id}": {
+          "put": {
+            "summary": "Editar um Lanche pelo ID",
+            "description": "Rota responsável por editar uma lanche pelo ID",
+            "tags": ["Lanches"],
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "description": "Id do lanche para a busca",
+                "required": true
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Lanches"
+                  },
+                  "examples": {
+                    "Lanches": {
+                      "value": {
+                        "local": "Nome da lanchonete Editável",
+                        "localizacao": "vila velha - es",
+                        "nome": "Podrão Gigantesco",
+                        "descricao": "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
+                        "foto": "./assets/img/korujao.png",
+                        "preco": 50
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "400": {
+                "description": "Bad Request"
+              },
+              "200": {
+                "description": "OK",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/Lanches"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/delete/{id}": {
+          "delete": {
+            "summary": "Apagar um lanche pelo ID",
+            "description": "Rota responsável por apagar um lanche pelo ID",
+            "tags": ["Lanches"],
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "description": "Id do lanche para deleção",
+                "required": true
+              }
+            ],
+            "responses": {
+              "400": {
+                "description": "Bad Request"
+              },
+              "200": {
+                "description": "OK"
+              }
+            }
+          }
+        },
+        "/all-carrinho": {
+          "get": {
+            "summary": "Lista de todos os itens do carrinho",
+            "description": "Rota responsável por listar todos os itens do carrinho",
+            "tags": ["Carrinho (FALTA INCLUIR) "],
+            "responses": {
+              "404": {
+                "description": "Not Found"
+              },
+              "200": {
+                "description": "OK",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Carrinho"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/create-carrinho": {
+          "post": {
+            "summary": "Cadastrar vários itens no carrinho",
+            "description": "Rota responsável por cadastrar vários itens no carrinho",
+            "tags": ["Carrinho"],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Carrinho"
+                  },
+                  "examples": {
+                    "Carrinho": {
+                      "value": [
+                        {
+                          "lancheId": "624230fdcd38269205c82197",
+                          "quantidade": 5
+                        },
+                        {
+                          "lancheId": "62423c1e618f4a4738a5ee75",
+                          "quantidade": 2
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "400": {
+                "description": "Bad Request"
+              },
+              "201": {
+                "description": "Created",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Carrinho"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/finish-carrinho": {
+            "delete": {
+              "summary": "Apagar todos os itens do carrinho",
+              "description": "Rota responsável por apagar todos os itens do carrinho",
+              "tags": ["Carrinho"],
+              "responses": {
+                "400": {
+                  "description": "Bad Request"
+                },
+                "200": {
+                  "description": "OK"
+                }
+              }
+            }
+          }
+      },
+      "components": {
+        "schemas": {
+          "Paletas": {
+            "type": "object",
+            "properties": {
+              "sabor": {
+                "type": "string"
+              },
+              "descricao": {
+                "type": "string"
+              },
+              "foto": {
+                "type": "string"
+              },
+              "preco": {
+                "type": "number"
+              }
+            }
+          },
+          "Carrinho": {
+            "type": "object",
+            "properties": {
+              "lancheId": {
+                "type": "string"
+              },
+              "quantidade": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    }
