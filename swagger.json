@@ -10,13 +10,12 @@
     },
     "servers": [
           {
-          "url": "https://apilanchesblue.onrender.com/",
+          "url": "https://apilanchesblue.onrender.com/lanches",
           "description": "API de produção Render"
         },
-     
         {
-          "url": "TESTE",
-          "description": "API de produção"
+          "url": "http://localhost:3333/lanches",
+          "description": "API de teste local"
         }
       ],
       "paths": {
