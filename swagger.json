@@ -35,7 +35,7 @@
                     "schema": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/Projeto-Lanches"
+                        "$ref": "#/components/schemas/lanches"
                       }
                     }
                   }
@@ -67,7 +67,7 @@
                   "application/json": {
                     "schema": {
                       "type": "object",
-                      "$ref": "#/components/schemas/Projeto-Lanches"
+                      "$ref": "#/components/schemas/lanches"
                     }
                   }
                 }
@@ -84,7 +84,7 @@
               "content": {
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/Projeto-Lanches"
+                    "$ref": "#/components/schemas/lanches"
                   },
                   "examples": {
                     "Lanches": {
@@ -111,7 +111,7 @@
                   "application/json": {
                     "schema": {
                       "type": "object",
-                      "$ref": "#/components/schemas/Projeto-Lanches"
+                      "$ref": "#/components/schemas/lanches"
                     }
                   }
                 }
@@ -136,7 +136,7 @@
               "content": {
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/Projeto-Lanches"
+                    "$ref": "#/components/schemas/lanches"
                   },
                   "examples": {
                     "Lanches": {
@@ -163,7 +163,7 @@
                   "application/json": {
                     "schema": {
                       "type": "object",
-                      "$ref": "#/components/schemas/Projeto-Lanches"
+                      "$ref": "#/components/schemas/lanches"
                     }
                   }
                 }
@@ -210,7 +210,7 @@
                     "schema": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/Projeto-Lancheso"
+                        "$ref": "#/components/schemas/lanches"
                       }
                     }
                   }
