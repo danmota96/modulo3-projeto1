@@ -13,10 +13,7 @@
           "url": "https://apilanchesblue.onrender.com/",
           "description": "API de produção Render"
         },
-        {
-          "url": "http://localhost:3333/lanches",
-          "description": "API de teste"
-        },
+     
         {
           "url": "TESTE",
           "description": "API de produção"
